@@ -1,0 +1,33 @@
+package employeerecord;
+
+/**
+ *
+ * @author Joud
+ */
+
+        public class EmployeeRecord {
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+        DoublyLinkedList list = new DoublyLinkedList();
+        Node newNode = new Node("John", 101, "2024-04-26", "123456789", "123 Main St", 40, 50000);
+        Node newNode1 = new Node("Joana", 102, "2024-05-06", "1234567865", "123 notMain St", 30, 51000);
+        Node newNode2 = new Node("megan", 103, "2024-04-20", "125496789", "13 Main St", 50, 500);
+        
+        list.addToFront(newNode);
+        list.addAtIndex(1, newNode1);
+        list.addToEnd(newNode2);
+        
+        list.printForward();
+       System.out.println( list.exist(newNode2));
+       System.out.println( list.isEmpty());
+        list.printBackward();
+        list.removeFront();
+        list.printForward();
+        list.removeEnd();
+        list.printForward();
+        list.remove(newNode1);
+       
+       
+    }
+}
