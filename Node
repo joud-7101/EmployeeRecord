@@ -1,0 +1,94 @@
+package employeerecord;
+
+/**
+ *
+ * @author joud
+ */
+public class Node {
+    public Node next;
+    public Node prev;
+    public String employeeName;
+    public int empID;
+    public String firstDayOfWork;
+    public String phoneNum;
+    public String employeeAddress;
+    public int workHours;
+    public int salary;
+
+    public Node(String employeeName, int empID, String firstDayOfWork, String phoneNum, String employeeAddress,
+                int workHours, int salary) {
+        this.employeeName = employeeName;
+        this.empID = empID;
+        this.firstDayOfWork = firstDayOfWork;
+        this.phoneNum = phoneNum;
+        this.employeeAddress = employeeAddress;
+        this.workHours = workHours;
+        this.salary = salary;
+    }
+
+    // Getters and setters for private fields
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public int getEmpID() {
+        return empID;
+    }
+
+    public void setEmpID(int empID) {
+        this.empID = empID;
+    }
+
+    public String getFirstDayOfWork() {
+        return firstDayOfWork;
+    }
+
+    public void setFirstDayOfWork(String firstDayOfWork) {
+        this.firstDayOfWork = firstDayOfWork;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getEmployeeAddress() {
+        return employeeAddress;
+    }
+
+    public void setEmployeeAddress(String employeeAddress) {
+        this.employeeAddress = employeeAddress;
+    }
+
+    public int getWorkHours() {
+        return workHours;
+    }
+
+    public void setWorkHours(int workHours) {
+        this.workHours = workHours;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+       public String toString() {
+        return "Employee Name: " + employeeName + 
+               ", Employee ID: " + empID + 
+               ", First Day of Work: " + firstDayOfWork +
+               ", Phone Number: " + phoneNum +
+               ", Employee Address: " + employeeAddress +
+               ", Work Hours: " + workHours +
+               ", Salary: " + salary;
+    }
+}
