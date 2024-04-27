@@ -1,0 +1,175 @@
+package employeerecord;
+
+/**
+ *
+ * @author joud
+ */
+public class DoublyLinkedList {
+       private Node head;
+    private Node tail;
+
+ 
+
+    public DoublyLinkedList() {
+        head = null;
+        tail = null;
+    }
+
+    // Method to check if the list is empty
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    // Method to add a new node at the beginning of the list
+    public void addToFront(Node newNode) {
+        
+        if (isEmpty()) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
+        }
+    }
+
+   // Method to add a new node at the end of the list
+public void addToEnd(Node newNode) {
+    if (isEmpty()) {
+        head = newNode;
+        tail = newNode;
+    } else {
+        tail.next = newNode;
+        newNode.prev = tail;
+        tail = newNode;
+    }
+}
+
+
+ // Method to print the list in forward direction
+public void printForward() {
+    Node current = head;
+    while (current != null) {
+        System.out.println(current.toString());
+        current = current.next;
+    }
+}
+
+// Method to print the list in backward direction
+public void printBackward() {
+    Node current = tail;
+    while (current != null) {
+        System.out.println(current.toString());
+        current = current.prev;
+    }
+}
+// Method to remove the last node from the list
+    public void removeEnd() {
+        if (isEmpty()) {
+            System.out.println("the list is empty");
+            return; // List is empty, nothing to remove
+        } else if (head == tail) {
+            // If there's only one node in the list
+           removeAll();
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+           System.out.println("last node  has been deleted!"); 
+        }
+    }
+
+    // Method to remove the first node from the list
+    public void removeFront() {
+        if (isEmpty()) {
+            System.out.println("the list is empty");
+            return ; // List is empty, nothing to remove
+        } else if (head == tail) {
+            // If there's only one node in the list
+            removeAll();
+        } else {
+            head = head.next;
+            head.prev = null;
+            System.out.println("first node  has been deleted!");
+        }
+    }
+
+    // Method to remove a specific node from the list
+    public void remove(Node nodeToRemove) {
+        if (isEmpty()) {
+            System.out.println("the list is empty");
+            return; // List is empty, nothing to remove
+        } else if (nodeToRemove == head) {
+            // If the node to remove is the head node
+            removeFront();
+            
+        } else if (nodeToRemove == tail) {
+            // If the node to remove is the tail node
+            removeEnd();
+        } else {
+            // If the node to remove is in the middle of the list
+            Node current = head;
+            while (current != null && current != nodeToRemove) {
+                current = current.next;
+            }
+            if (current != null) {
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+                System.out.println("the node  has been deleted!");
+            }
+        }
+    }
+     // Method to remove all nodes from the list, making it empty
+    public void removeAll() {
+        head = null;
+        tail = null;
+        System.out.println("the records has been deleted!");
+    }
+
+    // Method to check if a node with specific data exists in the list
+    public boolean exist(Node nodeToFind) {
+        Node current = head;
+        while (current != null) {
+            if (current == nodeToFind) {
+                return true; // Node found
+            }
+            current = current.next;
+        }
+        return false; // Node not found
+    }
+     // Method to add a new node at a specific index in the list
+    public void addAtIndex(int index, Node newNode) {
+        if (index < 0) {
+            throw new IllegalArgumentException("Index cannot be negative");
+        }
+
+        if (index == 0) {
+            // Adding at the beginning of the list
+            addToFront(newNode);
+        } else {
+            Node current = head;
+            int currentIndex = 0;
+
+            while (current != null && currentIndex < index - 1) {
+                current = current.next;
+                currentIndex++;
+            }
+
+            if (current == null) {
+                throw new IndexOutOfBoundsException("Index out of bounds");
+            }
+
+            // Adjust pointers to insert the new node
+            newNode.prev = current;
+            newNode.next = current.next;
+            if (current.next != null) {
+                current.next.prev = newNode;
+            } else {
+                // If inserting at the end of the list, update tail
+                tail = newNode;
+            }
+            current.next = newNode;
+        }
+    }
+
+    
+}
